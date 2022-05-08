@@ -18,7 +18,7 @@ end
 
 print("Downloading installer...")
 local code = ""
-local handle, chunk = internetProxy.request("ADD URL HERE")
+local handle, chunk = internetProxy.request("https://raw.githubusercontent.com/Ew-Developer/Gisp-OS/main/Installer.lua")
 print("Downloaded installer!")
 
 while true do
