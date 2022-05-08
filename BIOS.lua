@@ -24,11 +24,11 @@ print("Downloaded installer!")
 if fileMode then
   print("Installing installer...")
 
-  local file = io.open("/gispInstaller.lua", "w")
+  local file = io.open("/installer.lua", "w")
   file:write(codeResult)
   file:close()
 
-  print("Installed installer on '/gispInstaller.lua'!")
+  print("Installed installer on '/installer.lua'!")
   return
 end
 
