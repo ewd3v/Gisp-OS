@@ -18,9 +18,10 @@ end
 print("Port 69 is open!")
 os.sleep(1)
 print("Want to send a test message every 5 second? [y/n]")
+local option = io.read(1)
 if option == "y" then
   while true do
-  if broadcast(69, "TEST") then
+  if modem.broadcast(69, "TEST") then
     print("Sent the message")
     else
     print("Failed to send the message")
