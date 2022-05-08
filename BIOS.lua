@@ -1,5 +1,6 @@
-local internet = require("internet")
-assert(internet, "Internet component is required.")
+local component = require("component")
+local internet = component.internet
+assert(internet, "Internet component is required for Gisp-OS.")
 
 local fileMode = false
 while true do
@@ -24,11 +25,12 @@ print("Downloaded installer!")
 
 if fileMode then
   print("Installing installer...")
-  local file = io.open("GispInstaller.lua", "w")
+
+  local file = io.open("/gispInstaller.lua", "w")
   file:write(codeResult)
   file:close()
 
-  print("Installed installer on 'GispInstaller.lua'!")
+  print("Installed installer on '/gispInstaller.lua'!")
   return
 end
 
