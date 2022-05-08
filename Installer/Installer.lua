@@ -33,9 +33,12 @@ function title()
 	return y + 2
 end
 function status(text, needWait)
-	centrizedText(title(), 0x878787, text)
+	local y = title()
+	centrizedText(y, 0x878787, text)
 
 	if needWait then
+		centrizedText(y + 1, 0x969696, "(Click or press any key to continue...)")
+
 		repeat
 			needWait = computer.pullSignal()
 		until needWait == "key_down" or needWait == "touch"
