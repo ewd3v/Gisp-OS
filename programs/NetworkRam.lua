@@ -1,6 +1,6 @@
 local computer = require("computer")
 local com = require("component")
-local net = component.modem
+local net = com.modem
 assert(net, "Youre trying to do networking and you dont even have a network card")
 if not net.isOpen(69) then
   net.open(69)
