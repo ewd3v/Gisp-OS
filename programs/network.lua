@@ -3,7 +3,7 @@ local modem = component.modem
 assert(modem, "You are fucking stupid")
 if not modem.isOpen(69) then
   print("Do you want to open port 69? [y/n]")
-  local option = io.read(1):lower()
+  local option = io.read():lower()
   if option == "y" then
     print("Opening port 69")
     modem.open(69)
@@ -18,7 +18,7 @@ end
 print("Port 69 is open!")
 os.sleep(1)
 print("Want to send a test message every 5 second? [y/n]")
-local option = io.read(1)
+local option = io.read()
 if option == "y" then
   while true do
   if modem.broadcast(69, "TEST") then
