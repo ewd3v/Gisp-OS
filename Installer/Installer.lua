@@ -1,4 +1,4 @@
-local computer = request("computer")
+local computer = require("computer")
 local component = require("component")
 
 function noComponentError(name)
