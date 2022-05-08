@@ -9,22 +9,22 @@ os.execute("clear")
 print("Sending thru da intranet")
 os.sleep(1)
 local total = computer.totalMemory()
- if modem.broadcast(69, "Total memory:") then
+ if net.broadcast(69, "Total memory:") then
     print("Total memory:")
     else
     print("The data was not sent")
     end
-if modem.broadcast(69, total.." Byte") then
+if net.broadcast(69, total.." Byte") then
     print(total.." Byte")
     else
     print("The data was not sent")
     end
-if modem.broadcast(69, total/1024 .." KiloByte") then
+if net.broadcast(69, total/1024 .." KiloByte") then
     print(total/1024 .." KiloByte")
     else
     print("The data was not sent")
     end
-if modem.broadcast(69, total/1048576 .." MegaByte\n") then
+if net.broadcast(69, total/1048576 .." MegaByte\n") then
     print(total/1048576 .." MegaByte\n")
     else
     print("The data was not sent")
