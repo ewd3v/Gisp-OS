@@ -6,7 +6,7 @@ if not net.isOpen(69) then
   net.open(69)
 end
 os.execute("clear")
-Print("Sending thru da intranet")
+print("Sending thru da intranet")
 os.sleep(1)
 local total = computer.totalMemory()
  if modem.broadcast(69, "Total memory:") then
