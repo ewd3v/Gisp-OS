@@ -17,7 +17,7 @@ end
 
 print("Port 69 is open!")
 os.sleep(1)
-print("Want to send a test message every 5 second? [y/n]")
+print("Want to send a test message every 3 second? [y/n]")
 local option = io.read()
 if option == "y" then
   while true do
@@ -26,6 +26,14 @@ if option == "y" then
     else
     print("Failed to send the message")
     end
-    os.sleep(5)
+    os.sleep(3)
   end
-end 
+end
+print("Want to collect data from network? [y/n]")
+local option = io.read()
+if option == "y" then
+  while true do
+    local _, _, from, port, _, message = event.pull("modem_message")
+    print("Got a message from " .. from .. " on port " .. port .. ": " .. tostring(message))
+    end
+  end
