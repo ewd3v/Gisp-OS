@@ -1,5 +1,5 @@
 local component = require("component")
-local m = component.modem
+local modem = component.modem
 assert(modem, "You are fucking stupid")
 if not modem.isOpen(69) then
   print("Do you want to open port 69? [y/n]")
