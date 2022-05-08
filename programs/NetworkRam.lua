@@ -1,11 +1,34 @@
 local computer = require("computer")
+local com = require("component")
+local net = component.modem
+assert(net, "Youre trying to do networking and you dont even have a network card")
+if not net.isOpen(69) then
+  net.open(69)
+end
 os.execute("clear")
+Print("Sending thru da intranet")
 os.sleep(1)
 local total = computer.totalMemory()
-print("Total memory:")
-print(total.." Byte")
-print(total/1024 .." KiloByte")
-print(total/1048576 .." MegaByte\n")
+ if modem.broadcast(69, "Total memory:") then
+    print("Total memory:")
+    else
+    print("The data was not sent")
+    end
+if modem.broadcast(69, total.." Byte") then
+    print(total.." Byte")
+    else
+    print("The data was not sent")
+    end
+if modem.broadcast(69, total/1024 .." KiloByte") then
+    print(total/1024 .." KiloByte")
+    else
+    print("The data was not sent")
+    end
+if modem.broadcast(69, total/1048576 .." MegaByte\n") then
+    print(total/1048576 .." MegaByte\n")
+    else
+    print("The data was not sent")
+    end
 
 os.sleep(1)
 local free = computer.freeMemory()
