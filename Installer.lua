@@ -7,6 +7,7 @@ end
 local eeprom, gpu = getComponent("eeprom"), getComponent("gpu")
 local internet = require("internet") or error("Internet component is required for Gisp-OS.")
 
+local w, h = gpu.getResolution()
 gpu.fill(1, 1, w, h, " ") -- clears the screen
 gpu.setForeground(0x000000)
 gpu.setBackground(0xFFFFFF)
