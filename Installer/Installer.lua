@@ -71,3 +71,5 @@ if not temporaryHDD then
 	return
 end
 status("Found suitable hard disk drive found!", true)
+
+computer.shutdown(true)
