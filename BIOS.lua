@@ -1,6 +1,6 @@
 local component = require("component")
-local internetProxy = component.proxy(component.list("internet")())
-assert(internetProxy, "Internet component is required.")
+local internet = require("internet")
+assert(internet, "Internet component is required.")
 
 local fileMode = false
 while true do
@@ -18,14 +18,13 @@ end
 
 print("Downloading installer...")
 local codeResult = ""
-local handle = internetProxy.request("https://raw.githubusercontent.com/Ew-Developer/Gisp-OS/main/Installer.lua")
-print("Downloaded installer!")
-
-for chunk in handle do
+for chunk in internet.request("https://raw.githubusercontent.com/Ew-Developer/Gisp-OS/main/Installer.lua") do
   codeResult = codeResult..chunk
 end
+print("Downloaded installer!")
 
 if fileMode then
+  print("Installing installer...")
   local file = io.open("GispInstaller.lua", "w")
   file:write(codeResult)
   file:close()
@@ -34,6 +33,7 @@ if fileMode then
   return
 end
 
+print("Running installer...")
 local result, errorMessage = load(codeResult, "=installer")
 if not result then
   error(errorMessage)
