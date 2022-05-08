@@ -1,3 +1,4 @@
+local event = require("event")
 local component = require("component")
 local modem = component.modem
 assert(modem, "You are fucking stupid")
