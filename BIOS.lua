@@ -1,4 +1,3 @@
-local component = require("component")
 local internet = require("internet")
 assert(internet, "Internet component is required.")
 
