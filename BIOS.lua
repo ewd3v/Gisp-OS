@@ -1,5 +1,4 @@
-local component = require("component")
-local internet = component.internet
+local internet = require("internet")
 assert(internet, "Internet component is required for Gisp-OS.")
 
 local fileMode = false
