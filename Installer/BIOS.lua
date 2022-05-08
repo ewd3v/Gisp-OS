@@ -1,4 +1,4 @@
-local internet = require("internet") or error("Internet component is required for Gisp-OS.")
+local internet = require("internet") or error("Internet component is required for GispOS.")
 
 local fileMode = false
 while true do
@@ -16,7 +16,7 @@ end
 
 print("Downloading installer...")
 local codeResult = ""
-for chunk in internet.request("https://raw.githubusercontent.com/Ew-Developer/Gisp-OS/main/Installer.lua") do
+for chunk in internet.request("https://raw.githubusercontent.com/Ew-Developer/Gisp-OS/main/Installer/Installer.lua") do
   codeResult = codeResult..chunk
 end
 print("Downloaded installer!")
