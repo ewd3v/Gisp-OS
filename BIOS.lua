@@ -1,5 +1,5 @@
 local component = require("component")
-local internetProxy = component.proxy(component.list("internet"))
+local internetProxy = component.proxy(component.list("internet")())
 assert(internetProxy, "Internet component is required.")
 
 local fileMode = false
