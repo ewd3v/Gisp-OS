@@ -4,9 +4,8 @@ function getComponent(name)
     return component[name] or error(string.format("%s component is required for Gisp-OS.", name))
 end
 
-local eeprom, gou = getComponent("eeprom"), getComponent("gpu")
-local internet = require("internet")
-assert(internet, "Internet component is required for Gisp-OS.")
+local eeprom, gpu = getComponent("eeprom"), getComponent("gpu")
+local internet = require("internet") or error("Internet component is required for Gisp-OS.")
 
 gpu.fill(1, 1, w, h, " ") -- clears the screen
 gpu.setForeground(0x000000)

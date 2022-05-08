@@ -1,5 +1,4 @@
-local internet = require("internet")
-assert(internet, "Internet component is required for Gisp-OS.")
+local internet = require("internet") or error("Internet component is required for Gisp-OS.")
 
 local fileMode = false
 while true do
