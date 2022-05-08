@@ -15,7 +15,7 @@ local installerURL = repositoryURL.."/Installer"
 
 gpu.bind(component.list("screen")() or noComponentError("screen"))
 local screenWidth, screenHeight = gpu.getResolution()
-local temporaryFilesystemProxy, selectedFilesystemProxy
+local temporaryHDD, selectedHDD
 
 function centrize(width)
     return math.floor(screenWidth / 2 - width / 2 + 0.5)
@@ -55,14 +55,16 @@ gpu.fill(1, 1, screenWidth, screenHeight, " ")
 
 status("Finding suitable hard disk drive...", false)
 for address in component.list("filesystem") do
+    print(adress)
 	local proxy = component.proxy(address)
 	if proxy.spaceTotal() >= 2 * 1024 * 1024 then
-		temporaryFilesystemProxy, selectedFilesystemProxy = proxy, proxy
+		temporaryHDD, selectedHDD = proxy, proxy
 		break
 	end
 end
 
-if not temporaryFilesystemProxy then
-	status("No appropriate filesystem found", true)
+if not temporaryHDD then
+	status("No suitable hard disk drive found", true)
 	return
 end
+status("Found suitable hard disk drive found!", true)
