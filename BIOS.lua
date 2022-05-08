@@ -17,29 +17,24 @@ while true do
 end
 
 print("Downloading installer...")
-local code = ""
-local handle, chunk = internetProxy.request("https://raw.githubusercontent.com/Ew-Developer/Gisp-OS/main/Installer.lua")
+local codeResult = ""
+local handle = internetProxy.request("https://raw.githubusercontent.com/Ew-Developer/Gisp-OS/main/Installer.lua")
 print("Downloaded installer!")
 
-while true do
-  chunk = handle.read(math.huge)
-  if not chunk then
-    break
-  end
-  
-  code = code..chunk
+for chunk in handle do
+  codeResult = codeResult..chunk
 end
 
 if fileMode then
   local file = io.open("GispInstaller.lua", "w")
-  file:write(code)
+  file:write(codeResult)
   file:close()
 
   print("Installed installer on 'GispInstaller.lua'!")
   return
 end
 
-local result, errorMessage = load(code, "=installer")
+local result, errorMessage = load(codeResult, "=installer")
 if not result then
   error(errorMessage)
 end
