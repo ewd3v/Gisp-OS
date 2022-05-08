@@ -1,8 +1,24 @@
 local internetProxy = component.proxy(component.list("internet"))
 assert(internetProxy, "Internet component is required.")
 
+local fileMode = false
+while true do
+  print("Download the installer onto a file? [Y/N]")
+
+  local option = io.read(1):lower()
+  if option == "y" then
+    fileMode = true
+    break
+  elseif option == "n" then
+    fileMode = false
+    break
+  end
+end
+
+print("Downloading installer...")
 local code = ""
-local handle, chunk = internetProxy.request()
+local handle, chunk = internetProxy.request("ADD URL HERE")
+print("Downloaded installer!")
 
 while true do
   chunk = handle.read(math.huge)
@@ -11,6 +27,15 @@ while true do
   end
   
   code = code..chunk
+end
+
+if fileMode then
+  local file = io.open("GispInstaller.lua", "w")
+  file:write(code)
+  file:close()
+
+  print("Installed installer on 'GispInstaller.lua'!")
+  return
 end
 
 local result, errorMessage = load(code, "=installer")
@@ -22,5 +47,3 @@ local runSucceed, runErrorMessage = xpcall(result, debug.traceback)
 if not runSucceed then
   error(runErrorMessage)
 end
-
-print("Succeed")
