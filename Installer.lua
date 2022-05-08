@@ -22,3 +22,5 @@ local runSucceed, runErrorMessage = xpcall(result, debug.traceback)
 if not runSucceed then
   error(runErrorMessage)
 end
+
+print("Succeed")
