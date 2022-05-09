@@ -40,13 +40,13 @@ if option == "y" then
         else
         print("Failed to send the file")
         end
+      end
   else
     print("enter the servers ip")
       local server_ip = io.read()
     print("Enter your download request (get YourLink)")
       local link = io.read()
     modem.send(server_ip, 420, link)
-    end
   end
 end
       
