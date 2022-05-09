@@ -57,7 +57,7 @@ function progress(value)
 	gpu.set(x + part, y, string.rep("─", width - part))]]
 end
 
-gpu.setBackground(0xE1E1E1)
+gpu.setBackground(0x000000)
 gpu.fill(1, 1, screenWidth, screenHeight, " ")
 
 status("Finding suitable hard disk drive...", false)
