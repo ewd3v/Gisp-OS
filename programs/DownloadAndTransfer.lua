@@ -41,6 +41,7 @@ if option == "y" then
         print("Failed to send the file")
         end
       end
+    end
   else
     print("enter the servers ip")
       local server_ip = io.read()
