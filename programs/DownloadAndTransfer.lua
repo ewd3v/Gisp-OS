@@ -22,7 +22,7 @@ print("Is this the downloading server? [y/n]")
 local option = io.read()
 if option == "y" then
   while true do
-    local own_ip = component.get(_, modem)
+    local own_ip = component.modem.address
     print("This servers ip is:" .. own_ip)
     local _, _, ip, _, _, message = event.pull("modem_message")
     print("Got a request from: " .. ip)
