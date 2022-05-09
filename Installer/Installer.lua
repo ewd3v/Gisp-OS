@@ -18,26 +18,29 @@ gpu.bind(component.list("screen")() or noComponentError("screen"))
 local screenWidth, screenHeight = gpu.getResolution()
 local temporaryHDD, selectedHDD
 
+function exit()
+	return computer.shutdown(true)
+end
 function centrize(width)
     return math.floor(screenWidth / 2 - width / 2 + 0.5)
 end
-function centrizedText(y, color, text)
+function centrizedText(y, text)
     gpu.fill(1, y, screenWidth, 1, " ")
-	gpu.setForeground(color)
+	gpu.setForeground(0xFFFFFF)
 	gpu.set(centrize(#text), y, text)
 end
 function title()
     local y = math.floor(screenHeight / 2 - 1)
-	centrizedText(y, 0x2D2D2D, "GispOS")
+	centrizedText(y, "GispOS")
 
 	return y + 2
 end
 function status(text, needWait)
 	local y = title()
-	centrizedText(y, 0x878787, text)
+	centrizedText(y, text)
 
 	if needWait then
-		centrizedText(y + 1, 0x969696, "(Click or press any key to continue...)")
+		centrizedText(y + 1, "(Click or press any key to continue...)")
 
 		repeat
 			needWait = computer.pullSignal()
@@ -48,10 +51,10 @@ function progress(value)
 	local width = 26
 	local x, y, part = centrize(width), title(), math.floor(width * value + 0.5)
 	
-	gpu.setForeground(0x878787)
+	gpu.setForeground(0xFFFFFF)
 	gpu.set(x, y, string.rep("─", part))
-	gpu.setForeground(0xC3C3C3)
-	gpu.set(x + part, y, string.rep("─", width - part))
+	--[[gpu.setForeground(0xC3C3C3)
+	gpu.set(x + part, y, string.rep("─", width - part))]]
 end
 
 gpu.setBackground(0xE1E1E1)
@@ -68,8 +71,6 @@ end
 
 if not temporaryHDD then
 	status("No suitable hard disk drive found", true)
-	return
+	return exit()
 end
 status("Found suitable hard disk drive found!", true)
-
-computer.shutdown(true)
