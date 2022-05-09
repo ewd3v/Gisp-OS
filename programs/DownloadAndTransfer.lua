@@ -40,8 +40,8 @@ if option == "y" then
         print("Failed to send the file")
         os.sleep(2)
         os.execute("clear")
-     end
+      end
+    end
   end
 end
-        
       
