@@ -24,7 +24,7 @@ print("Is this the downloading server? [y/n]")
 local option = io.read()
 if option == "y" then
   while true do
-    local _, _, _, _, _, message = event.pull("modem_message")
+    local _, _, ip, _, _, message = event.pull("modem_message")
     local args = string.split(message, " ")
     local command = args[1]
     table.remove(args, 1)
@@ -34,4 +34,14 @@ if option == "y" then
       local handle = internet.request(raw_file)
       local result = ""
       for chunk in handle do result = result..chunk end
+      if modem.send(ip, [, result]) then
+        print("Sent the file")
+        else
+        print("Failed to send the file")
+        os.sleep(2)
+        os.execute("clear")
+     end
+  end
+end
+        
       
