@@ -34,7 +34,7 @@ if option == "y" then
       local handle = internet.request(raw_file)
       local result = ""
       for chunk in handle do result = result..chunk end
-      if modem.send(ip, 420 [, result]) then
+      if modem.send(ip, 420, result) then
         print("Sent the file")
         else
         print("Failed to send the file")
