@@ -48,6 +48,4 @@ if option == "y" then
     print("Enter your download request (get YourLink)")
       local link = io.read()
     modem.send(server_ip, 420, link)
-  end
 end
-      
