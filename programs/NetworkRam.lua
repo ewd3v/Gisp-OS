@@ -1,7 +1,7 @@
 local computer = require("computer")
 local com = require("component")
 local net = com.modem
-assert(net, "Youre trying to do networking and you dont even have a network card")
+assert(net, "You are trying to do networking and you dont even have a network card")
 if not net.isOpen(69) then
   net.open(69)
 end
@@ -32,14 +32,50 @@ if net.broadcast(69, total/1048576 .." MegaByte\n") then
 
 os.sleep(1)
 local free = computer.freeMemory()
-print("Free memory:")
-print(free.." Byte")
-print(free/1024 .." KiloByte")
-print(free/1048576 .." MegaByte\n")
+if net.broadcast(69, Free memory:") then
+    print("Free memory:")
+    else
+    print("The data was not sent")
+    end
+ if net.broadcast(69, free.." Byte") then
+    print(free.." Byte")
+    else
+    print("The data was not sent")
+    end
+  if net.broadcast(69, free/1024 .." KiloByte") then
+    print(free/1024 .." KiloByte")
+    else
+    print("The data was not sent")
+    end
+   if net.broadcast(69, free/1048576 .." MegaByte\n") then
+    print(free/1048576 .." MegaByte\n")
+    else
+    print("The data was not sent")
+    end
 
 os.sleep(1)
-print("Memory used:")
-print(string.format("%i%% memory is used", math.floor((1-(free/total))*100 + 0.5)))
-print(total-free .." Byte")
-print((total-free)/1024 .." KiloByte")
-print((total-free)/1048576 .." MegaByte")
+ if net.broadcast(69, "Memory used:") then
+    print("Memory used:")
+    else
+    print("The data was not sent")
+    end
+  if net.broadcast(69, string.format("%i%% memory is used", math.floor((1-(free/total))*100 + 0.5))) then
+    print(string.format("%i%% memory is used", math.floor((1-(free/total))*100 + 0.5)))
+    else
+    print("The data was not sent")
+    end
+  if net.broadcast(69, total-free .." Byte") then
+    print(total-free .." Byte")
+    else
+    print("The data was not sent")
+    end
+   if net.broadcast(69, (total-free)/1024 .." KiloByte") then
+    print((total-free)/1024 .." KiloByte")
+    else
+    print("The data was not sent")
+    end
+  if net.broadcast(69, (total-free)/1048576 .." MegaByte") then
+    print((total-free)/1048576 .." MegaByte")
+    else
+    print("The data was not sent")
+    end
