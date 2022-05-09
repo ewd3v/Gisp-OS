@@ -32,7 +32,7 @@ if net.broadcast(69, total/1048576 .." MegaByte\n") then
 
 os.sleep(1)
 local free = computer.freeMemory()
-if net.broadcast(69, Free memory:") then
+if net.broadcast(69, "Free memory:") then
     print("Free memory:")
     else
     print("The data was not sent")
