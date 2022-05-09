@@ -1,3 +1,4 @@
+os.execute("clear")
 local event = require("event")
 local component = require("component")
 local modem = component.modem
@@ -18,23 +19,28 @@ end
 
 print("Port 69 is open!")
 os.sleep(1)
-print("Want to send a test message every 3 second? [y/n]")
+os.execute("clear")
+print("Want to write messages? [y/n]")
 local option = io.read()
 if option == "y" then
+  print("Select a username")
+  local name = io.read()
+  os.execute("clear")
   while true do
-  if modem.broadcast(69, "TEST") then
-    print("Sent the message")
-    else
+    local _, _, _, _, _, message = event.pull("modem_message")
+    print(tostring(message))
+    local message = io.read()
+  if not modem.broadcast(69, name .. ": " .. message) then
     print("Failed to send the message")
     end
     os.sleep(3)
   end
 end
-print("Want to collect data from network? [y/n]")
+print("Want to only collect data from network? [y/n]")
 local option = io.read()
 if option == "y" then
   while true do
-    local _, _, from, port, _, message = event.pull("modem_message")
-    print("Got a message from " .. from .. " on port " .. port .. ": " .. tostring(message))
+    local _, _, _, _, _, message = event.pull("modem_message")
+    print(tostring(message))
     end
   end
