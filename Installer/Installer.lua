@@ -63,7 +63,7 @@ gpu.fill(1, 1, screenWidth, screenHeight, " ")
 status("Finding suitable hard disk drive...", false)
 for address in component.list("filesystem") do
 	local proxy = component.proxy(address)
-	if proxy.spaceTotal() >= 2 * 1024 * 1024 then
+	if proxy.spaceTotal() >=  then
 		temporaryHDD, selectedHDD = proxy, proxy
 		break
 	end
