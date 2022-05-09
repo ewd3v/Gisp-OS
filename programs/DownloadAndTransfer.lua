@@ -9,8 +9,6 @@ if not modem.isOpen(420) then
   if option == "y" then
     print("Opening port 420")
     modem.open(420)
-  else
-    return
   end
 end
 if not modem.isOpen(420) then
@@ -24,7 +22,10 @@ print("Is this the downloading server? [y/n]")
 local option = io.read()
 if option == "y" then
   while true do
+    local own_ip = modem.remoteAddress
+    print("This servers ip is:" .. own_ip)
     local _, _, ip, _, _, message = event.pull("modem_message")
+    print("Got a request from: " .. ip)
     local args = string.split(message, " ")
     local command = args[1]
     table.remove(args, 1)
@@ -38,9 +39,13 @@ if option == "y" then
         print("Sent the file")
         else
         print("Failed to send the file")
-        os.sleep(2)
-        os.execute("clear")
-      end
+        end
+  else
+    print("enter the servers ip")
+      local server_ip = io.read()
+    print("Enter your download request (get YourLink)")
+      local link = io.read()
+    modem.send(server_ip, 420, link)
     end
   end
 end
