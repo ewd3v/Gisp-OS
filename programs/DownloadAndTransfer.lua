@@ -43,4 +43,8 @@ if option == "y" then
     print("Enter your download request (Input your link)")
       local link = io.read()
     modem.send(server_ip, 420, link)
+    local _, _, ip, _, _, file = event.pull("modem_message")
+    if ip == server_ip then
+    print(file)
+    end
   end
