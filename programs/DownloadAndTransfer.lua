@@ -83,4 +83,5 @@ if option == "y" then
       else
         print("Failed to search for servers")
       end
+end
 
