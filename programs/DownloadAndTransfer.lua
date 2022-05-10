@@ -36,7 +36,6 @@ if option == "y" then
         else
         print("Failed to send the file")
         end
-      end
     end
   else
     print("enter the servers ip")
