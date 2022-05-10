@@ -3,21 +3,23 @@ local event = require("event")
 local component = require("component")
 local modem = component.modem
 assert(modem, "You are fucking stupid")
-if not modem.isOpen(69) then
-  print("Do you want to open port 69? [y/n]")
-  local option = io.read():lower()
+print("Pick a port to listen/chat on")
+local port = io.read()
+if not modem.isopen(port) then
+  print("Do you want to open port: " .. port .. "[y/n]")
+  local option = io.read()
   if option == "y" then
-    print("Opening port 69")
-    modem.open(69)
-  else
+    if not modem.open(port) then
+      return
+      end
+    else 
     return
-  end
-end
-if not modem.isOpen(69) then
-  return
-end
+    end
+ end
+      
+  
 
-print("Port 69 is open!")
+print("Port ".. port .." is open!")
 os.sleep(1)
 os.execute("clear")
 print("Want to write messages? [y/n]")
