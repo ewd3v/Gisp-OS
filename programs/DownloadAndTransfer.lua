@@ -24,7 +24,7 @@ if option == "y" then
   os.execute("clear")
   local own_ip = component.modem.address
     print("This servers ip is: " .. own_ip)
-  while true do
+  while(true) do
     local _, _, ip, _, _, message = event.pull("modem_message")
     if message == "Server? Do you exsist?" then
     print("Responding to search from: " .. ip)
@@ -55,7 +55,7 @@ if option == "y" then
     os.execute("clear")
     print("Searching for server")
       if modem.broadcast(420, "Server? Do you exsist?") then
-        while(true)
+        while(true) do
         local _, _, ip, _, _, exsist = event.pull("modem_message") then
           if exsist == "Yes I exsist" then
             os.execute("clear")
