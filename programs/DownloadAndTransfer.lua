@@ -26,9 +26,7 @@ if option == "y" then
     print("This servers ip is:" .. own_ip)
     local _, _, ip, _, _, message = event.pull("modem_message")
     print("Got a request from: " .. ip)
-    local iter = ("get url https://localhost"):gmatch("%S+")
-    if iter() == "get" then
-      local raw_file = iter()
+      local raw_file = message
       local internet = require("internet")
       local handle = internet.request(raw_file)
       local result = ""
@@ -43,7 +41,7 @@ if option == "y" then
   else
     print("enter the servers ip")
       local server_ip = io.read()
-    print("Enter your download request (get YourLink)")
+    print("Enter your download request (Input your link)")
       local link = io.read()
     modem.send(server_ip, 420, link)
 end
