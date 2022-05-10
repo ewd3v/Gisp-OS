@@ -26,11 +26,9 @@ if option == "y" then
     print("This servers ip is:" .. own_ip)
     local _, _, ip, _, _, message = event.pull("modem_message")
     print("Got a request from: " .. ip)
-    local args = string.split(message, " ")
-    local command = args[1]
-    table.remove(args, 1)
-    if command == "get" then
-      local raw_file = args[1]
+    local iter = ("get url https://localhost"):gmatch("%S+")
+    if iter() == "get" then
+      local raw_file = iter()
       local internet = require("internet")
       local handle = internet.request(raw_file)
       local result = ""
