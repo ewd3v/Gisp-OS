@@ -45,7 +45,8 @@ if option == "y" then
         end
       else
         print("Failed to responde to: " .. ip)
-    end
+        end
+      end
     end
   end
 
