@@ -21,9 +21,10 @@ os.execute("clear")
 print("Is this the downloading server? [y/n]")
 local option = io.read()
 if option == "y" then
+  os.execute("clear")
+  local own_ip = component.modem.address
+    print("This servers ip is: " .. own_ip)
   while true do
-    local own_ip = component.modem.address
-    print("This servers ip is:" .. own_ip)
     local _, _, ip, _, _, message = event.pull("modem_message")
     print("Got a request from: " .. ip)
       local raw_file = message
@@ -45,6 +46,9 @@ if option == "y" then
     modem.send(server_ip, 420, link)
     local _, _, ip, _, _, file = event.pull("modem_message")
     if ip == server_ip then
-    print(file)
+    local io = require("io")
+    local f = io.open("RENAME_DOWNLOADED_FILE.lua","w")
+    f:write(file)
+    f:close()
     end
   end
