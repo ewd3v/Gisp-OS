@@ -56,7 +56,7 @@ if option == "y" then
     print("Searching for server")
       if modem.broadcast(420, "Server? Do you exsist?") then
         while(true) do
-        local _, _, ip, _, _, exsist = event.pull("modem_message") then
+        local _, _, ip, _, _, exsist = event.pull("modem_message")
           if exsist == "Yes I exsist" then
             os.execute("clear")
             print("Found a server")
