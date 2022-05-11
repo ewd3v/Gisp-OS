@@ -53,7 +53,6 @@ else
     os.execute("clear")
     print("Searching for server")
     if modem.broadcast(420, "Server? Do you exsist?") then
-        while true do
             local _, _, ip, _, _, exsist = event.pull("modem_message")
             if exsist == "Yes I exsist" then
                 os.execute("clear")
@@ -76,7 +75,6 @@ else
                 os.execute("clear")
                 print("Failed to send request :/")
             end
-        end
     else
         print("Failed to search for servers")
     end
