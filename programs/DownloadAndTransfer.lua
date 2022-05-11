@@ -22,12 +22,10 @@ print("Is this the downloading server? [y/n]")
 local option = io.read()
 if option == "y" then
     os.execute("clear")
-    local own_ip = component.modem.address
-    print("This servers ip is: " .. own_ip)
     while (true) do
         local _, _, ip, _, _, message = event.pull("modem_message")
         if message == "Server? Do you exsist?" then
-            print("Responding to search from: " .. ip)
+            print("Search from: " .. ip)
             if modem.send(ip, 420, "Yes I exsist") then
                 print("Responded to search!")
                 local _, _, ip2, _, _, message = event.pull("modem_message")
@@ -55,7 +53,7 @@ else
     os.execute("clear")
     print("Searching for server")
     if modem.broadcast(420, "Server? Do you exsist?") then
-        while (true) do
+        while true do
             local _, _, ip, _, _, exsist = event.pull("modem_message")
             if exsist == "Yes I exsist" then
                 os.execute("clear")
@@ -69,7 +67,7 @@ else
                     if ip2 == ip then
                         print("Choose file format (.lua is the most common)")
                         local format = io.read()
-                        local f = io.open("RENAME_DOWNLOADED_FILE.lua", "w")
+                        local f = io.open("RENAME_DOWNLOADED_FILE" .. format, "w")
                         f:write(file)
                         f:close()
                     end
