@@ -37,11 +37,11 @@ if option == "y" then
                     local result = ""
                     for chunk in handle do
                         result = result .. chunk
-                    end
                     if modem.send(ip, 420, result) then
                         print("Sent the file")
                     else
                         print("Failed to send the file")
+                      end
                     end
                 else
                     print("Failed to responde to: " .. ip)
