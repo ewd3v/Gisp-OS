@@ -5,7 +5,7 @@ local modem = component.modem
 assert(modem, "You are fucking stupid")
 print("Pick a port to listen/chat on")
 local port = io.read()
-if not modem.isopen(port) then
+if not modem.isOpen(port) then
   print("Do you want to open port: " .. port .. "[y/n]")
   local option = io.read()
   if option == "y" then
