@@ -14,10 +14,13 @@ local internet = require("internet") or noComponentError("internet")
 local repositoryURL = "https://raw.githubusercontent.com/Ew-Developer/Gisp-OS/main"
 local installerURL = repositoryURL.."/Installer"
 
+if 1 == 1 then
+
+end
+
 gpu.bind(component.list("screen")() or noComponentError("screen"))
 local screenWidth, screenHeight = gpu.getResolution()
 local temporaryHDD, selectedHDD
-
 function exit()
 	return computer.shutdown(true)
 end
