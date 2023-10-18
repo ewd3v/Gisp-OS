@@ -15,14 +15,9 @@ if not modem.isOpen(420) then
     return
 end
 
-print("Port 420 is open!")
-os.sleep(1)
-os.execute("clear")
-print("Is this the downloading server? [y/n]")
-local option = io.read()
-if option == "y" then
+function Server()
     os.execute("clear")
-    while (true) do
+    while true do
         local _, _, ip, _, _, message = event.pull("modem_message")
         if message == "Server? Do you exsist?" then
             print("Search from: " .. ip)
@@ -43,7 +38,6 @@ if option == "y" then
                         print("Sent the file")
                     else
                         print("Failed to send the file")
-                      end
                     end
                 else
                     print("Failed to responde to: " .. ip)
@@ -51,6 +45,15 @@ if option == "y" then
             end
         end
     end
+end
+
+print("Port 420 is open!")
+os.sleep(1)
+os.execute("clear")
+print("Is this the downloading server? [y/n]")
+local option = io.read()
+if option == "y" then
+    server()
 else
     os.execute("clear")
     print("Searching for server")
